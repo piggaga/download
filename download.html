@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>下載檔案</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .download-container {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .download-container h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+        .download-container a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .download-container a:hover {
+            background-color: #0056b3;
+        }
+        .download-container p {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+        .download-container select {
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="download-container">
+        <h1>下載檔案</h1>
+        <select id="version-select">
+            <option value="v1">版本 1</option>
+        </select>
+        <a id="download-link" href="#" download>點此下載檔案</a>
+        <p id="file-description"></p>
+        <a href="index.html" class="back-button">返回主頁面</a>
+    </div>
+    <script>
+        const fileMap = {
+            'page1': { fileName: 'Temporary Text Editor (python)', description: 'python暫時編譯器' }
+        };
+
+        const params = new URLSearchParams(window.location.search);
+        const page = params.get('page');
+
+        const versionSelect = document.getElementById('version-select');
+        const downloadLink = document.getElementById('download-link');
+        const fileDescription = document.getElementById('file-description');
+
+        function updateDownloadLink() {
+            if (page && fileMap[page]) {
+                const fileData = fileMap[page];
+                const selectedVersion = versionSelect.value;
+                downloadLink.href = `zip/${fileData.fileName}_${selectedVersion}.zip`;
+                downloadLink.download = `${fileData.fileName}_${selectedVersion}.zip`;
+                fileDescription.textContent = fileData.description;
+            } else {
+                document.querySelector('.download-container').innerHTML = '<h1>無效的頁面</h1>';
+            }
+        }
+
+        versionSelect.addEventListener('change', updateDownloadLink);
+        window.onload = updateDownloadLink;
+    </script>
+</body>
+</html>
