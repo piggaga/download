@@ -87,9 +87,9 @@
 
         function updateDownloadLink(fileData) {
             const selectedVersion = versionSelect.value;
-            const versionFileName = fileData.versions[selectedVersion];
-            downloadLink.href = `zip/${versionFileName}`;
-            downloadLink.download = versionFileName;
+            const versionFilePath = fileData.versions[selectedVersion];
+            downloadLink.href = versionFilePath;
+            downloadLink.download = versionFilePath.split('/').pop();
             fileDescription.textContent = fileData.description;
         }
 
