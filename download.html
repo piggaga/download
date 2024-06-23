@@ -67,18 +67,12 @@
 <body>
     <div class="download-container">
         <h1>下載檔案</h1>
-        <select id="version-select">
-            <option value="v1">版本 1</option>
-        </select>
+        <select id="version-select"></select>
         <a id="download-link" href="#" download>點此下載檔案</a>
         <p id="file-description"></p>
         <a href="index.html" class="back-button">返回主頁面</a>
     </div>
     <script>
-        const fileMap = {
-            'page1': { fileName: 'Temporary Text Editor (python)', description: 'python暫時編譯器' }
-        };
-
         const params = new URLSearchParams(window.location.search);
         const page = params.get('page');
 
@@ -86,20 +80,41 @@
         const downloadLink = document.getElementById('download-link');
         const fileDescription = document.getElementById('file-description');
 
-        function updateDownloadLink() {
-            if (page && fileMap[page]) {
-                const fileData = fileMap[page];
-                const selectedVersion = versionSelect.value;
-                downloadLink.href = `zip/${fileData.fileName}_${selectedVersion}.zip`;
-                downloadLink.download = `${fileData.fileName}_${selectedVersion}.zip`;
-                fileDescription.textContent = fileData.description;
+        async function fetchFileData() {
+            const response = await fetch('files.json');
+            return await response.json();
+        }
+
+        function updateDownloadLink(fileData) {
+            const selectedVersion = versionSelect.value;
+            const versionFileName = fileData.versions[selectedVersion];
+            downloadLink.href = `zip/${versionFileName}`;
+            downloadLink.download = versionFileName;
+            fileDescription.textContent = fileData.description;
+        }
+
+        async function init() {
+            const fileData = await fetchFileData();
+
+            if (page && fileData[page]) {
+                const fileDetails = fileData[page];
+                fileDescription.textContent = fileDetails.description;
+
+                Object.keys(fileDetails.versions).forEach(version => {
+                    const option = document.createElement('option');
+                    option.value = version;
+                    option.textContent = `版本 ${version.replace('v', '')}`;
+                    versionSelect.appendChild(option);
+                });
+
+                versionSelect.addEventListener('change', () => updateDownloadLink(fileDetails));
+                updateDownloadLink(fileDetails);
             } else {
                 document.querySelector('.download-container').innerHTML = '<h1>無效的頁面</h1>';
             }
         }
 
-        versionSelect.addEventListener('change', updateDownloadLink);
-        window.onload = updateDownloadLink;
+        window.onload = init;
     </script>
 </body>
 </html>
