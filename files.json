@@ -1,0 +1,18 @@
+{
+    "page1": {
+        "fileName": "Temporary Text Editor",
+        "description": "python暫時編譯器",
+        "versions": {
+            "v1": "Temporary_Text_Editor_v1.zip",
+            "v2": "Temporary_Text_Editor_v2.zip"
+        }
+    },
+    "page2": {
+        "fileName": "Another File",
+        "description": "Another file description",
+        "versions": {
+            "v1": "Another_File_v1.zip",
+            "v2": "Another_File_v2.zip"
+        }
+    }
+}
