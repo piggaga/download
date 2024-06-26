@@ -70,6 +70,7 @@
         <select id="version-select"></select>
         <a id="download-link" href="#" download>點此下載檔案</a>
         <p id="file-description"></p>
+        <p id="version-details"></p>
         <a href="index.html" class="back-button">返回主頁面</a>
     </div>
     <script>
@@ -79,6 +80,7 @@
         const versionSelect = document.getElementById('version-select');
         const downloadLink = document.getElementById('download-link');
         const fileDescription = document.getElementById('file-description');
+        const versionDetails = document.getElementById('version-details');
 
         async function fetchFileData() {
             const response = await fetch('files.json');
@@ -87,10 +89,11 @@
 
         function updateDownloadLink(fileData) {
             const selectedVersion = versionSelect.value;
-            const versionFilePath = fileData.versions[selectedVersion];
-            downloadLink.href = versionFilePath;
-            downloadLink.download = versionFilePath.split('/').pop();
+            const versionInfo = fileData.versions[selectedVersion];
+            downloadLink.href = versionInfo.filePath;
+            downloadLink.download = versionInfo.filePath.split('/').pop();
             fileDescription.textContent = fileData.description;
+            versionDetails.textContent = versionInfo.details;
         }
 
         async function init() {
