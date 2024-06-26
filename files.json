@@ -8,8 +8,12 @@
                 "details": "版本 1: 初始版本，包含基本功能。"
             },
             "v2": {
-                "filePath": "./zip/Temporary Text Editor (python)_v1.zip",
+                "filePath": "./zip/Temporary Text Editor (python)_v2.zip",
                 "details": "版本 2: 美化外觀，新增多渠道功能。"
+            },
+            "v3": {
+                "filePath": "./zip/Temporary Text Editor (python)_v3.zip",
+                "details": "版本 2: 美化外觀，新增完善功能。"
             }
         }
     }
