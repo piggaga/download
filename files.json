@@ -3,8 +3,14 @@
         "fileName": "Temporary Text Editor",
         "description": "python暫時編譯器",
         "versions": {
-            "v1": "./zip/Temporary Text Editor (python)_v1.zip",
-            "v2": "./zip/Temporary Text Editor (python)_v2.zip"
+            "v1": {
+                "filePath": "./zip/Temporary_Text_Editor_v1.zip",
+                "details": "版本 1: 初始版本，包含基本功能。"
+            },
+            "v2": {
+                "filePath": "./zip/Temporary_Text_Editor_v2.zip",
+                "details": "版本 2: 美化外觀，新增多渠道功能。"
+            }
         }
     }
 }
