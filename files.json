@@ -18,6 +18,10 @@
             "v4": {
                 "filePath": "./zip/Temporary Text Editor (python)_v4.zip",
                 "details": "版本 4: 新增設定檔。"
+            },
+            "v5": {
+                "filePath": "./zip/Temporary Text Editor (python)_v5.zip",
+                "details": "版本 5: 修復bug。"
             }
         }
     }
