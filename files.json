@@ -13,7 +13,11 @@
             },
             "v3": {
                 "filePath": "./zip/Temporary Text Editor (python)_v3.zip",
-                "details": "版本 3: 美化外觀，新增完善功能。"
+                "details": "版本 3: 美化外觀，完善功能。"
+            },
+            "v3": {
+                "filePath": "./zip/Temporary Text Editor (python)_v4.zip",
+                "details": "版本 4: 新增設定檔。"
             }
         }
     }
