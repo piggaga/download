@@ -44,7 +44,7 @@
         "description": "文件加密程式",
         "versions": {
             "v1": {
-                "filePath": "./zip/文件加密程式.zip",
+                "filePath": "./zip/文件加密程式_v1.zip",
                 "details": "版本 1: 初始版本，包含基本功能。"
             }
         }
